@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural Highlights</title>
+    <title>Cultural Highlights - Explore the World</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="/css/cultural.css">
+    <link rel="stylesheet" href="css/cultural.css">
 </head>
 <body>
     
@@ -15,13 +13,12 @@
         <h1><strong>Cultural Highlights</strong></h1>
     </header>
 
-
     <nav class="navbar">
         <ul>
             <li><a href="homePage.html">Home</a></li>
             <li><a href="destination.html">Destination</a></li>
             <li><a href="tips.html">Travel Tips</a></li>
-            <li><a href="cultural.html">Cultural Highlight</a></li>
+            <li><a href="cultural.html" class="active">Cultural Highlight</a></li>
             <li><a href="adventure.html">Adventure & Activities</a></li>
             <li><a href="food&cuisine.html">Food & Cuisine</a></li>
             <li><a href="experience.html">Travel Blog & Experiences</a></li>
@@ -29,45 +26,51 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <h1 class="section-title"><strong>Cultural Highlights Around the World</strong></h1>
-        <div class="row">
+    <div class="container my-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+            <h1 class="section-title mb-0"><strong>Cultural Highlights Around the World</strong></h1>
+            <button class="btn btn-outline-danger btn-sm px-3 py-2 mt-2 mt-md-0 fw-bold shadow-sm" onclick="checkFavorites()">
+                💖 View My Favorite Festivals
+            </button>
+        </div>
+
+        <div class="row g-4">
             <!-- Diwali -->
             <div class="col-md-6">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#diwaliModal">
-                    <img src="/image/diwali.jpg" class="img-fluid" alt="Diwali - Festival of Lights (India)">
-                    <div class="card-body">
-                        <h5 class="card-title">Diwali - Festival of Lights (India)</h5>
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#diwaliModal">
+                    <img src="image/diwali.jpg" class="card-img-top" alt="Diwali - Festival of Lights (India)">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Diwali - Festival of Lights (India)</h5>
                     </div>
                 </div>
             </div>
 
             <!-- Chinese New Year -->
             <div class="col-md-6">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#cnyModal">
-                    <img src="/image/CNY.jpg" class="img-fluid" alt="Chinese New Year (China)">
-                    <div class="card-body">
-                        <h5 class="card-title">Chinese New Year (China)</h5>
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#cnyModal">
+                    <img src="image/CNY.jpg" class="card-img-top" alt="Chinese New Year (China)">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Chinese New Year (China)</h5>
                     </div>
                 </div>
             </div>
 
             <!-- Carnival -->
             <div class="col-md-6">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#carnivalModal">
-                    <img src="/image/rio.jpg" class="img-fluid" alt="Carnival in Brazil">
-                    <div class="card-body">
-                        <h5 class="card-title">Rio Carnival (Brazil)</h5>
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#carnivalModal">
+                    <img src="image/rio.jpg" class="card-img-top" alt="Carnival in Brazil">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Rio Carnival (Brazil)</h5>
                     </div>
                 </div>
             </div>
 
             <!-- Oktoberfest -->
             <div class="col-md-6">
-                <div class="card" data-bs-toggle="modal" data-bs-target="#oktoberfestModal">
-                    <img src="/image/oktoberfest.jpg" class="img-fluid" alt="Oktoberfest (Germany)">
-                    <div class="card-body">
-                        <h5 class="card-title">Oktoberfest (Germany)</h5>
+                <div class="card h-100 shadow-sm" role="button" data-bs-toggle="modal" data-bs-target="#oktoberfestModal">
+                    <img src="image/oktoberfest.jpg" class="card-img-top" alt="Oktoberfest (Germany)">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">Oktoberfest (Germany)</h5>
                     </div>
                 </div>
             </div>
@@ -83,65 +86,66 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="https://people.com/thmb/C0RTl4MBJrYNyEOFXyIP5tMbEzw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x99:751x101):format(webp)/diwali-102022-3-05a455826c2f4a2b993740300f88f041.jpg" class="img-fluid mb-3" alt="Diwali">
-                    <p>Diwali is celebrated across India with fireworks, sweets, prayers, and lighting oil lamps. It signifies the victory of light over darkness.</p>
-                    <p><strong>When:</strong> October-November (date varies each year)</p>
-                    <p><strong>Where:</strong> Throughout India, especially in cities like Delhi, Mumbai, and Varanasi</p>
-                    <p><strong>Highlights:</strong> Lighting lamps, bursting fireworks, and family gatherings.</p>
-                    <p><button class="btn btn-outline-primary btn-sm mt-2" onclick="saveFavoriteCulture('Diwali Festival')">
-                        💖 Save Favorite
-                    </button></p>
-                    <h5>Video</h5>
+                    <img src="image/diwali.jpg" class="img-fluid rounded mb-3" alt="Diwali celebration">
+                    <p>Diwali is celebrated across India with fireworks, sweets, prayers, and lighting oil lamps. It signifies the spiritual victory of light over darkness and good over evil.</p>
+                    <p><strong>When:</strong> October - November (dates vary by lunar calendar)</p>
+                    <p><strong>Where:</strong> Throughout India, especially in Delhi, Mumbai, and Varanasi</p>
+                    <p><strong>Highlights:</strong> Lighting clay lamps (diyas), bursting fireworks, rangoli designs, and festive family feasts.</p>
+                    <p>
+                        <button class="btn btn-outline-danger btn-sm" onclick="saveFavoriteCulture('Diwali Festival')">
+                            💖 Save Favorite
+                        </button>
+                    </p>
+                    <h5 class="mt-4">Featured Highlight Video</h5>
                     <iframe width="100%" height="315" src="https://www.youtube.com/embed/havBDwFgW24" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CNY Modal -->
+    <!-- Chinese New Year Modal -->
     <div class="modal fade" id="cnyModal" tabindex="-1" aria-labelledby="cnyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="cnyModalLabel">Chinese New Year (China)</h5>
+                    <h5 class="modal-title" id="cnyModalLabel">Chinese New Year (China & Global Diaspora)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="https://www.ncabgroup.com/wp-content/uploads/2023/09/news_cny24.jpg" class="img-fluid mb-3" alt="Chinese New Year">
-                    <p>Chinese New Year is celebrated with dragon dances, lanterns, fireworks, and feasts. It marks the beginning of the lunar new year.</p>
-                    <p><strong>When:</strong> January-February (date varies each year)</p>
-                    <p><strong>Where:</strong> China, Hong Kong, Singapore, Malaysia</p>
-                    <p><strong>Highlights:</strong> Lantern festivals, family reunions, and red envelopes.</p>
-                    <p><button class="btn btn-outline-primary btn-sm mt-2" onclick="saveFavoriteCulture('Chinese New Year Festival')">
-                        💖 Save Favorite
-                    </button></p>
-                    <h5>Video</h5>
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/kz7SaOj-fjA" frameborder="0" allowfullscreen></iframe>
+                    <img src="image/CNY.jpg" class="img-fluid rounded mb-3" alt="Chinese New Year">
+                    <p>Also known as the Spring Festival, this magnificent celebration marks the beginning of a new year on the traditional lunisolar Chinese calendar.</p>
+                    <p><strong>When:</strong> January - February</p>
+                    <p><strong>Where:</strong> China, Hong Kong, Taiwan, Singapore, Malaysia, and Chinatowns worldwide</p>
+                    <p><strong>Highlights:</strong> Dragon and lion dances, red lanterns, reunion dinners, red envelopes (hongbao), and firecrackers.</p>
+                    <p>
+                        <button class="btn btn-outline-danger btn-sm" onclick="saveFavoriteCulture('Chinese New Year')">
+                            💖 Save Favorite
+                        </button>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Carnival Modal -->
+    <!-- Rio Carnival Modal -->
     <div class="modal fade" id="carnivalModal" tabindex="-1" aria-labelledby="carnivalModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="carnivalModalLabel">Rio Carnival (Brazil)</h5>
+                    <h5 class="modal-title" id="carnivalModalLabel">Rio Carnival (Rio de Janeiro, Brazil)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="https://images.travelandleisureasia.com/wp-content/uploads/sites/3/2024/02/06131505/Gustavo-Ardila.jpg?tr=w-1366,f-jpg,pr-true" class="img-fluid mb-3" alt="Carnival">
-                    <p>Rio Carnival is the biggest carnival in the world, featuring samba parades, street parties, and vibrant costumes.</p>
-                    <p><strong>When:</strong> February-March (dates vary)</p>
-                    <p><strong>Where:</strong> Rio de Janeiro, Brazil</p>
-                    <p><strong>Highlights:</strong> Samba parades, street parties, and extravagant costumes.</p>
-                    <p><button class="btn btn-outline-primary btn-sm mt-2" onclick="saveFavoriteCulture('Carnival in Brazil')">
-                        💖 Save Favorite
-                    </button></p>
-                </div>
-                    <h5>Video</h5>
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/HzZzkuE6J4s" frameborder="0" allowfullscreen></iframe>
+                    <img src="image/rio.jpg" class="img-fluid rounded mb-3" alt="Rio Carnival">
+                    <p>Considered the biggest carnival in the world, Rio Carnival is filled with revelers, floats, and adornments from numerous samba schools.</p>
+                    <p><strong>When:</strong> February - March (before Lent)</p>
+                    <p><strong>Where:</strong> Rio de Janeiro, Brazil (Sambadrome Marques de Sapucai)</p>
+                    <p><strong>Highlights:</strong> Vibrant samba parades, elaborate costumes, street band parties (blocos), and nonstop music.</p>
+                    <p>
+                        <button class="btn btn-outline-danger btn-sm" onclick="saveFavoriteCulture('Rio Carnival')">
+                            💖 Save Favorite
+                        </button>
+                    </p>
                 </div>
             </div>
         </div>
@@ -152,70 +156,52 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="oktoberfestModalLabel">Oktoberfest (Germany)</h5>
+                    <h5 class="modal-title" id="oktoberfestModalLabel">Oktoberfest (Munich, Germany)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="https://media.licdn.com/dms/image/v2/D4E12AQF7ZivXZDBoBw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1693327896952?e=1749081600&v=beta&t=ccB6enDNaEIbSazv9b8_4seMAArpwqeQr5LfqK4V6BI" class="img-fluid mb-3" alt="Oktoberfest">
-                    <p>Oktoberfest is the world’s largest beer festival, held annually in Munich, where visitors enjoy beer, food, music, and parades.</p>
-                    <p><strong>When:</strong> September-October</p>
-                    <p><strong>Where:</strong> Munich, Germany</p>
-                    <p><strong>Highlights:</strong> Beer tents, traditional Bavarian costumes, and food stalls.</p>
-                    <p><button class="btn btn-outline-primary btn-sm mt-2" onclick="saveFavoriteCulture('Oktoberfest (Germany)')">
-                        💖 Save Favorite
-                    </button></p>
-                    <h5>Video</h5>
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/16iCzQ7Ryok" frameborder="0" allowfullscreen></iframe>
+                    <img src="image/oktoberfest.jpg" class="img-fluid rounded mb-3" alt="Oktoberfest">
+                    <p>Oktoberfest is the world's largest Volksfest, featuring a beer festival and a traveling funfair held annually in Munich, Bavaria, Germany.</p>
+                    <p><strong>When:</strong> Mid-September to the first Sunday in October</p>
+                    <p><strong>Where:</strong> Theresienwiese, Munich, Germany</p>
+                    <p><strong>Highlights:</strong> Traditional Bavarian attire (Dirndl and Lederhosen), brass folk music, giant pretzels, and festive beer halls.</p>
+                    <p>
+                        <button class="btn btn-outline-danger btn-sm" onclick="saveFavoriteCulture('Oktoberfest')">
+                            💖 Save Favorite
+                        </button>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="text-center mt-4">
-        <p id="favoriteCultureDisplay" class="fw-bold text-success"></p>
-    </div>
-
-    <div class="d-flex gap-3 mt-4">
-        <button class="btn btn-outline-secondary" onclick="checkFavorites()">
-            Check Favorites
-        </button>
-        <a href="https://calendar.google.com/calendar/u/0/r/eventedit?state=%5Bnull%2Cnull%2Cnull%2Cnull%2C%5B13%5D%5D" 
-           target="_blank" 
-           class="btn btn-primary">
-           Add Schedule to Google Calendar
-        </a>
-    </div>
-
 
     <!-- Modal to display saved favorites -->
-        <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="favoritesModalLabel">My Favorite Festivals</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="favoritesModalLabel">My Favorite Festivals</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <div class="modal-body">
+                <div class="modal-body">
                     <ul id="favoritesList" class="list-group">
-                    <!-- Favorite festivals will be listed here -->
+                        <!-- Favorite festivals listed here -->
                     </ul>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <footer class="footer text-center mt-5">
+        <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
+            <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+        </div>
+    </footer>
 
-        <footer class="footer text-center mt-5">
-            <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-            <div class="social-buttons">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-                <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
-            </div>
-        </footer>
-    
-    <script src="/js/cultural.js"></script>
-
-      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cultural.js"></script>
 </body>
 </html>

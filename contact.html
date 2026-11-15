@@ -2,11 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>About Us</title>
-        <link rel="stylesheet" href="/css/contact.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us & Contact - Explore the World</title>
+        <link rel="stylesheet" href="css/contact.css">
     </head>
     <body>
-        <h1 id="header1" title="about us" >About Us</h1>
+        <h1 id="header1" title="about us">About Us</h1>
 
         <nav class="navbar">
             <ul>
@@ -17,74 +18,71 @@
                 <li><a href="adventure.html">Adventure & Activities</a></li>
                 <li><a href="food&cuisine.html">Food & Cuisine</a></li>
                 <li><a href="experience.html">Travel Blog & Experiences</a></li>
-                <li><a href="contact.html">About Us</a></li>
+                <li><a href="contact.html" class="active">About Us</a></li>
             </ul>
         </nav>
 
         <div class="reveal">
-
-            <object data="/image/animation.gif" width="800" height="500" class="animation"></object>
-       
+            <img src="image/animation.gif" alt="Explore the World Animation" class="animation" style="max-width: 100%; height: auto; border-radius: 12px; margin: auto; display: block;">
         </div>
 
         <div class="reveal">
-
             <h1>Why Choose Us?</h1>
 
             <div class="choose">
-                <img src="/image/choose.jpg" alt="choose us" class="image1">
+                <img src="image/choose.jpg" alt="Personalized travel service" class="image1">
                 <div class="description">
                     <p><strong>1. Personalized Service</strong></p>
                     <ul>
-                        <li>Listen to your preferences and plan a packages for you.</li>
-                        <li>Depend on your interest and comfort level and schedule a best plan for your trip.</li>
-                        <li>So that your travel trip can be more enjoyable.</li>
+                        <li>We listen carefully to your travel dreams and craft tailored experiences just for you.</li>
+                        <li>Customized around your pace, preferences, and comfort level for seamless vacations.</li>
+                        <li>Enjoy maximum peace of mind with 24/7 travel advice and destination insights.</li>
                     </ul>
                 </div>       
             </div>
-
         </div>
 
         <div class="reveal">
-
             <div class="reason">
-                <img src="/image/excited.jpg" alt="excited" class="image2">
+                <img src="image/excited.jpg" alt="Expert travel knowledge" class="image2">
                 <div class="description0">
-                    <p><strong>2. Expertise and Deep Knowledge</strong></p>
+                    <p><strong>2. Expertise & Deep Local Knowledge</strong></p>
                     <ul>
-                        <li>We work with reliable local partners and guides who know about the culture of country and know the wonderful place that are not mentioned in guides book.</li>
-                        <li>This can help you to avoid tourist traps.</li>
-                        <li>We can also help you to find a unique activities and make you have an unforgettable trips.</li>
+                        <li>We partner directly with verified local guides and experts across Europe, America, and Asia.</li>
+                        <li>Steer clear of overcrowded tourist traps and discover authentic cultural gems.</li>
+                        <li>Unearth one-of-a-kind adventures, heritage sites, and genuine local delicacies.</li>
                     </ul>
                 </div>
             </div>
-
         </div>
 
         <div class="reveal">
-
             <div class="center-image">
                 <div class="image-wrapper">
-                    <img src="/image/background.png" alt="background">
+                    <img src="image/background.png" alt="Office and business hours background">
                     <div class="text-over-image">
-                        <h3>Business Hour</h3>
-                        <p>Monday : 8.00am - 5.00pm</p>
-                        <p>Tuesday : 8.00am - 5.00pm</p>
-                        <p>Wednesday : 8.00am - 5.00pm</p>
-                        <p>Thursday : 8.00am - 5.00pm</p>
-                        <p>Friday : 8.00am - 5.00pm</p>
-                        <p>Saturday : 8.00am - 1.00pm</p>
-                        <p>Sunday : Closed</p>
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday : 8:00 AM - 5:00 PM (GMT+8)</p>
+                        <p>Saturday : 8:00 AM - 1:00 PM</p>
+                        <p>Sunday & Public Holidays : Closed</p>
                     </div>
                 </div>
             </div>
-
         </div>
         
-        <div class="reveal">
-            <h1>Contact Us! 📧</h1>
-            <p class="email">Click <a href="mailto:chingyinkean@1utar.my">HERE</a>! Thank you for supporting us! You can also give some feedback.😁</p>
+        <div class="reveal" id="contactSection">
+            <h1>Contact Us & Share Feedback 📧</h1>
+            <p class="email">Have travel questions or want to collaborate? Email us at <a href="mailto:chingyinkean@1utar.my">chingyinkean@1utar.my</a> or reach out through our community channels!</p>
         </div>
+
+        <footer class="footer text-center mt-5">
+            <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
+                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
+                <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+            </div>
+        </footer>
 
         <script>
             function revealOnScroll() {
@@ -98,7 +96,7 @@
                 if (elementTop < windowHeight && elementBottom > 0) {
                   el.classList.add("active");
                 } else {
-                  el.classList.remove("active"); // remove it when it's out of view
+                  el.classList.remove("active");
                 }
               });
             }

@@ -1,72 +1,99 @@
 /* Global styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #fefcea, #f1da36);
+    background: linear-gradient(135deg, #fefcea 0%, #f1da36 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-  }
-  
-  /* Container for form */
-  form {
-    background-color: #fff;
-    padding: 40px 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-  }
-  
-  /* Heading */
-  h2 {
-    margin-bottom: 25px;
-    color: #333;
-  }
-  
-  /* Inputs */
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 20px;
     box-sizing: border-box;
-  }
-  
-  /* Button */
-  button {
+}
+
+/* Container for form & auth card */
+.auth-card, form:not(.inner-form) {
+    background-color: #fff;
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.auth-card form {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    width: 100%;
+}
+
+/* Heading */
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ff9800;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+}
+
+/* Button */
+button {
     width: 100%;
     padding: 12px;
     background-color: #ff9800;
     border: none;
     color: white;
     font-size: 16px;
+    font-weight: 600;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
     background-color: #e68900;
-  }
-  
-  /* Link */
-  p {
-    margin-top: 20px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Link */
+p {
+    margin-top: 18px;
+    margin-bottom: 0;
     font-size: 14px;
-  }
-  
-  a {
+    color: #555;
+}
+
+a {
     color: #ff5722;
     text-decoration: none;
     font-weight: bold;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     text-decoration: underline;
-  }
-  
+}

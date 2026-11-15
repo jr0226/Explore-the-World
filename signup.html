@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="/css/style.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up - Explore the World</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>  
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-            <input type="text" id="signupUsername" placeholder="Username" required><br>
-            <input type="password" id="signupPassword" placeholder="Password" required><br>
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="index.html">Login</a></p>
+        <div class="auth-card">
+            <h2>Join Explore the World</h2>
+            <form id="signupForm">
+                <input type="text" id="signupUsername" placeholder="Choose a Username" required autocomplete="username"><br>
+                <input type="password" id="signupPassword" placeholder="Create a Password" required autocomplete="new-password"><br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="index.html">Login</a></p>
+            <p style="margin-top: 15px;"><a href="homePage.html" style="color: #666; font-size: 13px; font-weight: normal;">← Continue as Guest to Website</a></p>
+        </div>
 
         <script>
             document.getElementById('signupForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const username = document.getElementById('signupUsername').value.trim().toLowerCase();
                 const password = document.getElementById('signupPassword').value.trim();
+
+                if (!username || !password) {
+                    alert('Please fill in both username and password.');
+                    return;
+                }
         
-                // Store only in localStorage (not cookies)
                 if (localStorage.getItem('user_' + username)) {
                     alert('Username already exists! Please choose a different one.');
                 } else {
                     localStorage.setItem('user_' + username, password);
-                    alert('Sign up successful!');
-                    window.location.href = 'index.html';
+                    // Also auto log them in for convenience
+                    sessionStorage.setItem('loggedInUser', username);
+                    localStorage.setItem('loggedInUser', username);
+                    alert('Sign up successful! Welcome aboard!');
+                    window.location.href = 'homePage.html';
                 }
             });
         </script>
-              
     </body>
 </html>

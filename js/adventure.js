@@ -1,92 +1,84 @@
-// Function to clear the saved favorite from localStorage
+// Adventure favorites handling with error-free element checking
 function clearFavorite() {
-    // Remove the specific item (favorite adventure) from localStorage
     localStorage.removeItem("favoriteAdventure");
 
-    // Reset the displayed favorite text to default
-    document.getElementById("favoriteDisplay").innerText = 
-        "Your favorite adventure: None selected yet."; // Reset display
+    const display = document.getElementById("favoriteDisplay");
+    if (display) {
+        display.innerText = "Your favorite adventure: None selected yet.";
+    }
 
-    // Optional: Enable the button again if you want to allow re-saving
-    const saveButton = document.querySelectorAll('.btn-outline-warning');
-    saveButton.forEach(button => {
+    const saveButtons = document.querySelectorAll('.btn-outline-warning');
+    saveButtons.forEach(button => {
         button.disabled = false;
-        button.innerText = "⭐ Save as Favorite"; // Reset button text
+        button.innerText = "⭐ Save as Favorite";
     });
 
-    alert("Your favorite adventure has been cleared.");
+    if (window.showToast) {
+        window.showToast("Your favorite adventure has been cleared.");
+    } else {
+        alert("Your favorite adventure has been cleared.");
+    }
 }
 
-
-
-// Function to save the favorite activity to localStorage
-function saveFavoriteAdventure(adventure) {
-    // Save the favorite adventure to localStorage
+function saveFavoriteAdventure(adventure, btnElement) {
     localStorage.setItem("favoriteAdventure", adventure);
 
-    // Optional: Change the button text to show it's saved
-    const saveButton = event.target; // Get the clicked button
-    saveButton.innerText = "⭐ Saved"; // Change text after saving
-    saveButton.disabled = true;       // Disable the button to prevent multiple clicks
+    // Also sync to savedAdventures list for the unified wishlist
+    try {
+        let savedList = JSON.parse(localStorage.getItem("savedAdventures")) || [];
+        if (!savedList.includes(adventure)) {
+            savedList.push(adventure);
+            localStorage.setItem("savedAdventures", JSON.stringify(savedList));
+        }
+    } catch (e) {
+        console.error("Error saving adventure list", e);
+    }
 
-    // Update the favoriteDisplay text
-    document.getElementById("favoriteDisplay").innerText = 
-        "Your favorite adventure: " + adventure;
+    const clickedBtn = btnElement || (typeof event !== 'undefined' && event ? (event.currentTarget || event.target) : null);
+    if (clickedBtn && clickedBtn.innerText) {
+        clickedBtn.innerText = "⭐ Saved";
+        clickedBtn.disabled = true;
+    }
 
-    // Alert to confirm the favorite is saved
-    alert("Your favorite adventure is saved: " + adventure);
+    const display = document.getElementById("favoriteDisplay");
+    if (display) {
+        display.innerText = "Your favorite adventure: " + adventure;
+    }
+
+    if (window.showToast) {
+        window.showToast(`Saved "${adventure}" to your favorites!`);
+    } else {
+        alert("Your favorite adventure is saved: " + adventure);
+    }
+
+    if (window.updateNavCounters) {
+        window.updateNavCounters();
+    }
 }
 
-// On page load, check if there's a saved favorite in localStorage
-window.onload = function () {
+function initAdventureFavorites() {
     const savedFavorite = localStorage.getItem("favoriteAdventure");
+    const display = document.getElementById("favoriteDisplay");
 
-    // If there's a saved favorite, update the display
-    if (savedFavorite) {
-        document.getElementById("favoriteDisplay").innerText = 
-            "Your favorite adventure: " + savedFavorite;
-    } else {
-        // If no favorite is saved, display a default message
-        document.getElementById("favoriteDisplay").innerText = 
-            "Your favorite adventure: None selected yet.";
+    if (display) {
+        if (savedFavorite) {
+            display.innerText = "Your favorite adventure: " + savedFavorite;
+        } else {
+            display.innerText = "Your favorite adventure: None selected yet.";
+        }
     }
-};
 
-
-window.onload = function () {
-    const savedFavorite = localStorage.getItem("favoriteAdventure");
-
+    // Update buttons matching current favorite
     if (savedFavorite) {
-        document.getElementById("favoriteDisplay").innerText = 
-            "Your favorite adventure: " + savedFavorite;
-    } else {
-        document.getElementById("favoriteDisplay").innerText = 
-            "Your favorite adventure: None selected yet."; // Default message
+        const buttons = document.querySelectorAll('.btn-outline-warning');
+        buttons.forEach(btn => {
+            const onclickAttr = btn.getAttribute('onclick') || '';
+            if (onclickAttr.includes(savedFavorite)) {
+                btn.innerText = "⭐ Saved";
+                btn.disabled = true;
+            }
+        });
     }
-};
-
-function clearFavorite() {
-    console.log('Clearing favorite...');
-    localStorage.removeItem("favoriteAdventure");
-    console.log('favoriteAdventure removed from localStorage');
-
-    document.getElementById("favoriteDisplay").innerText = "Your favorite adventure: None selected yet.";
-    
-    const saveButton = document.querySelectorAll('.btn-outline-warning');
-    saveButton.forEach(button => {
-        button.disabled = false;
-        button.innerText = "⭐ Save as Favorite"; 
-    });
-
-    alert("Your favorite adventure has been cleared.");
 }
 
-
-// Show saved favorite on load
-window.onload = function () {
-  const fav = localStorage.getItem("favoriteAdventure");
-  if (fav) {
-    document.getElementById("favoriteDisplay").innerText = 
-      "Your favorite adventure: " + fav;
-  }
-};
+document.addEventListener("DOMContentLoaded", initAdventureFavorites);
