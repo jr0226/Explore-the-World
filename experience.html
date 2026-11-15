@@ -4,26 +4,49 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Travel Blog & Experiences - Explore the World</title>
+        <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/experience.css">
+        <script defer src="js/common.js"></script>
+        <script defer src="js/features.js"></script>
     </head>
     <body>
        
+        <nav class="site-navbar">
+            <div class="nav-container">
+                <a href="homePage.html" class="nav-brand">
+                    🌍 Explore the World
+                </a>
+                <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+                <ul class="nav-links">
+                    <li><a href="homePage.html">Home</a></li>
+                    <li><a href="destination.html">Destination</a></li>
+                    <li><a href="tips.html">Travel Tips</a></li>
+                    <li><a href="cultural.html">Cultural Highlight</a></li>
+                    <li><a href="adventure.html">Adventure & Activities</a></li>
+                    <li><a href="food&cuisine.html">Food & Cuisine</a></li>
+                    <li><a href="experience.html" class="active">Travel Blog & Experiences</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                        🔍 Search
+                    </button>
+                    <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                        💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                    </button>
+                    <div class="nav-user-dropdown">
+                        <button class="nav-action-btn">
+                            👤 <span id="nav-user-label">User</span> ▾
+                        </button>
+                        <div class="nav-user-menu" id="nav-user-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
         <div class="background-title">
             <h1 style="text-align: center;">Travel Blog & Experience</h1>
         </div>
-
-        <nav class="navbar">
-            <ul>
-                <li><a href="homePage.html">Home</a></li>
-                <li><a href="destination.html">Destination</a></li>
-                <li><a href="tips.html">Travel Tips</a></li>
-                <li><a href="cultural.html">Cultural Highlight</a></li>
-                <li><a href="adventure.html">Adventure & Activities</a></li>
-                <li><a href="food&cuisine.html">Food & Cuisine</a></li>
-                <li><a href="experience.html" class="active">Travel Blog & Experiences</a></li>
-                <li><a href="contact.html">About Us</a></li>
-            </ul>
-        </nav>
 
         <section class="blog-container">
             <article class="blog-post">
@@ -33,7 +56,10 @@
                 <p id="bali-text" class="hidden">Bali, known as the "Island of the Gods," is a paradise that blends rich culture with breathtaking landscapes.
                     Visitors can explore the mesmerizing <b>Tegallalang Rice Terraces</b>, relax on the stunning <b>Nusa Dua Beach</b>, 
                     or witness the magical sunset at <b>Uluwatu Temple</b>. Whether you're a beach lover, an adventure seeker, or a culture enthusiast, Bali has something for everyone.</p>
-                <a href="#" onclick="toggleText('bali-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('bali-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Bali Tropical Island Getaway')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -43,7 +69,10 @@
                 <p id="paris-text" class="hidden">Paris is often called the <b>City of Love</b>. From strolling along the <b>Champs-Élysées</b> to taking in the breathtaking view from the <b>Eiffel Tower</b>, 
                     every corner of the city tells a story. Discover the artistic soul of <b>Montmartre</b>, enjoy a coffee at a charming <b>café along the Seine</b>, 
                     or visit the world-famous <b>Louvre Museum</b>, home to the Mona Lisa.</p>
-                <a href="#" onclick="toggleText('paris-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('paris-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Parisian Walking Tour')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -52,7 +81,10 @@
                 <p>Hike through breathtaking mountain landscapes and experience the best of Switzerland.</p>
                 <p id="swiss-text" class="hidden">The <b>Swiss Alps</b> are a dream come true for nature lovers. Whether you're skiing in <b>Zermatt</b>, hiking around the picturesque <b>Matterhorn</b>, 
                     or taking a scenic train ride on the <b>Glacier Express</b>, Switzerland's natural beauty will leave you in awe.</p>
-                <a href="#" onclick="toggleText('swiss-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('swiss-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Swiss Alps Alpine Adventure')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -61,7 +93,10 @@
                 <p>Witness the breathtaking aurora borealis in Norway's Arctic Circle.</p>
                 <p id="norway-text" class="hidden">Norway offers one of the best views of the <b>Northern Lights</b>, especially in places like <b>Tromsø</b> and <b>Lofoten Islands</b>. 
                     Take a winter adventure under the magical green skies, enjoy snowmobiling, or stay in a unique glass igloo for the best views.</p>
-                <a href="#" onclick="toggleText('norway-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('norway-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Norway Aurora Borealis Expedition')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -70,7 +105,10 @@
                 <p>Walk along one of the greatest wonders of the world.</p>
                 <p id="china-text" class="hidden">The <b>Great Wall of China</b> stretches over 13,000 miles and offers breathtaking views of mountains and ancient architecture. 
                     Visit the most famous sections like <b>Badaling</b> and <b>Mutianyu</b>, where you can hike and explore this historical marvel.</p>
-                <a href="#" onclick="toggleText('china-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('china-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Great Wall Historical Trek')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -80,7 +118,10 @@
                 <p id="egypt-text" class="hidden">Egypt is home to some of the most iconic ancient wonders. The <b>Great Pyramid of Giza</b>, built over 4,500 years ago, 
                     still stands as one of the Seven Wonders of the Ancient World. Visitors can explore the mysterious <b>Sphinx</b>, 
                     sail the <b>Nile River</b>, and discover fascinating hieroglyphs inside ancient temples.</p>
-                <a href="#" onclick="toggleText('egypt-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('egypt-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Ancient Egypt & Nile Cruise')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -90,7 +131,10 @@
                 <p id="venice-text" class="hidden">Venice, the city of canals, is famous for its <b>Gondola rides</b> through the winding waterways. 
                     Experience the beauty of the historic <b>Rialto Bridge</b>, visit the magnificent <b>St. Mark’s Basilica</b>, 
                     and enjoy the vibrant atmosphere of <b>Piazza San Marco</b>.</p>
-                <a href="#" onclick="toggleText('venice-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('venice-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Venice Gondola & Canal Tour')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
             <article class="blog-post">
@@ -100,7 +144,10 @@
                 <p id="klcc-text" class="hidden">The <b>Petronas Twin Towers</b> in Kuala Lumpur, Malaysia, stand as an iconic symbol of modern architecture. 
                     Take in stunning city views from the <b>Skybridge</b>, shop at the luxurious <b>Suria KLCC Mall</b>, and unwind at the beautiful <b>KLCC Park</b>. 
                     At night, witness the mesmerizing <b>Lake Symphony Light and Music Fountain Show</b> outside the towers.</p>
-                <a href="#" onclick="toggleText('klcc-text', this); return false;">Read More</a>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#" onclick="toggleText('klcc-text', this); return false;" style="font-weight: bold; color: #ff5722;">Read More</a>
+                    <button onclick="openBookingModal('Kuala Lumpur City Highlights')" style="background: #0284c7; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer;">Book Tour</button>
+                </div>
             </article>
 
         </section>  
@@ -132,12 +179,12 @@
             });
         </script>    
 
-        <footer class="footer text-center mt-5">
+        <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px;">
             <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-            <div class="social-buttons">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-                <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+            <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+                <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
             </div>
         </footer>
  

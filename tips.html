@@ -3,24 +3,153 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Travel Tips - Explore the World</title>
+        <title>Travel Tips & Essential Tools - Explore the World</title>
+        <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" type="text/css" href="css/tips.css">
+        <script defer src="js/common.js"></script>
+        <script defer src="js/features.js"></script>
+        <script defer src="js/tips.js"></script>
     </head>
     <body>
-        <h1 id="header1" title="Travel Tips">Travel Tips</h1>
-
-        <nav class="navbar">
-            <ul>
-                <li><a href="homePage.html">Home</a></li>
-                <li><a href="destination.html">Destination</a></li>
-                <li><a href="tips.html" class="active">Travel Tips</a></li>
-                <li><a href="cultural.html">Cultural Highlight</a></li>
-                <li><a href="adventure.html">Adventure & Activities</a></li>
-                <li><a href="food&cuisine.html">Food & Cuisine</a></li>
-                <li><a href="experience.html">Travel Blog & Experiences</a></li>
-                <li><a href="contact.html">About Us</a></li>
-            </ul>
+        <nav class="site-navbar">
+            <div class="nav-container">
+                <a href="homePage.html" class="nav-brand">
+                    🌍 Explore the World
+                </a>
+                <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+                <ul class="nav-links">
+                    <li><a href="homePage.html">Home</a></li>
+                    <li><a href="destination.html">Destination</a></li>
+                    <li><a href="tips.html" class="active">Travel Tips</a></li>
+                    <li><a href="cultural.html">Cultural Highlight</a></li>
+                    <li><a href="adventure.html">Adventure & Activities</a></li>
+                    <li><a href="food&cuisine.html">Food & Cuisine</a></li>
+                    <li><a href="experience.html">Travel Blog & Experiences</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                        🔍 Search
+                    </button>
+                    <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                        💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                    </button>
+                    <div class="nav-user-dropdown">
+                        <button class="nav-action-btn">
+                            👤 <span id="nav-user-label">User</span> ▾
+                        </button>
+                        <div class="nav-user-menu" id="nav-user-menu"></div>
+                    </div>
+                </div>
+            </div>
         </nav>
+
+        <h1 id="header1" title="Travel Tips">Travel Tips & Essential Travel Tools</h1>
+
+        <!-- Interactive Travel Utilities Section -->
+        <div style="max-width: 1100px; margin: 30px auto; padding: 0 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;">
+                
+                <!-- Tool 1: Live Currency Converter -->
+                <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-top: 4px solid #ff9800;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">💱</span>
+                        <h3 style="margin: 0; font-size: 1.2rem; color: #1e293b;">Live Currency Converter</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div>
+                            <label style="font-size: 0.85rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">Amount</label>
+                            <input type="number" id="currAmount" value="100" min="0" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: flex-end;">
+                            <div>
+                                <label style="font-size: 0.85rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">From</label>
+                                <select id="currFrom" style="width: 100%; padding: 10px 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: white;">
+                                    <option value="USD" selected>USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                    <option value="JPY">JPY (¥)</option>
+                                    <option value="MYR">MYR (RM)</option>
+                                    <option value="AUD">AUD (A$)</option>
+                                    <option value="SGD">SGD (S$)</option>
+                                </select>
+                            </div>
+                            <button onclick="swapCurrencies()" title="Swap currencies" style="background: #f1f5f9; border: 1px solid #cbd5e1; padding: 10px 12px; border-radius: 8px; cursor: pointer; font-size: 1rem;">⇄</button>
+                            <div>
+                                <label style="font-size: 0.85rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">To</label>
+                                <select id="currTo" style="width: 100%; padding: 10px 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: white;">
+                                    <option value="EUR" selected>EUR (€)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                    <option value="JPY">JPY (¥)</option>
+                                    <option value="MYR">MYR (RM)</option>
+                                    <option value="AUD">AUD (A$)</option>
+                                    <option value="SGD">SGD (S$)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; padding: 14px; background: #fff7ed; border-radius: 10px; text-align: center;">
+                            <span style="font-size: 0.85rem; color: #9a3412; font-weight: 600; display: block;">Estimated Exchange Result:</span>
+                            <span id="currResult" style="font-size: 1.25rem; font-weight: 800; color: #ea580c;">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Interactive Packing Checklist -->
+                <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-top: 4px solid #10b981;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 1.5rem;">🎒</span>
+                            <h3 style="margin: 0; font-size: 1.2rem; color: #1e293b;">Packing Checklist</h3>
+                        </div>
+                        <button onclick="resetPackingChecklist()" style="background: none; border: none; font-size: 0.8rem; color: #64748b; cursor: pointer; text-decoration: underline;">Reset</button>
+                    </div>
+                    
+                    <div style="background: #f1f5f9; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 8px;">
+                        <div id="packingProgress" style="background: #10b981; width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                    </div>
+                    <div id="packingProgressText" style="font-size: 0.8rem; color: #64748b; margin-bottom: 14px; text-align: right;"></div>
+
+                    <div id="packingListContainer" style="max-height: 200px; overflow-y: auto; padding-right: 4px; margin-bottom: 14px;"></div>
+
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="newPackingItem" placeholder="Add custom item (e.g. Camera)" style="flex: 1; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem;">
+                        <button onclick="addPackingItem()" style="background: #10b981; color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer;">Add</button>
+                    </div>
+                </div>
+
+                <!-- Tool 3: Destination Climate & Advice -->
+                <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-top: 4px solid #0284c7;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
+                        <span style="font-size: 1.5rem;">🌤️</span>
+                        <h3 style="margin: 0; font-size: 1.2rem; color: #1e293b;">Climate & Packing Advice</h3>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.85rem; font-weight: 600; color: #64748b; display: block; margin-bottom: 4px;">Choose Destination</label>
+                        <select id="destinationWeatherSelect" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; margin-bottom: 14px;">
+                            <option value="paris" selected>Paris, France</option>
+                            <option value="newyork">New York, USA</option>
+                            <option value="rome">Rome, Italy</option>
+                            <option value="swiss">Swiss Alps, Switzerland</option>
+                            <option value="bali">Bali, Indonesia</option>
+                        </select>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 14px; border-radius: 10px; border: 1px solid #bae6fd;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span id="weatherTemp" style="font-size: 1.2rem; font-weight: 800; color: #0369a1;">18°C</span>
+                            <span id="weatherCondition" style="font-size: 0.9rem; font-weight: 600; color: #0284c7;">Mild & Partly Sunny</span>
+                        </div>
+                        <div style="font-size: 0.83rem; color: #475569; margin-bottom: 8px;">
+                            <strong>Best Season:</strong> <span id="weatherMonths">April to October</span>
+                        </div>
+                        <p id="weatherTip" style="font-size: 0.85rem; color: #334155; margin: 0; line-height: 1.4; border-top: 1px solid #e0f2fe; padding-top: 8px;"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #ff6600; margin-top: 40px; margin-bottom: 25px;">Expert Travel Wisdom & Guidelines</h2>
 
         <div class="tips1 hidden">
             <img src="image/travel.jpg" alt="Local tourism information" class="photo1">
@@ -70,16 +199,13 @@
             </div>
         </div>
 
-        <footer class="footer text-center mt-5">
+        <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px;">
             <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-            <div class="social-buttons">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-                <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+            <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+                <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
             </div>
         </footer>
-
-        <script src="js/tips.js"></script>
-
     </body>
 </html>

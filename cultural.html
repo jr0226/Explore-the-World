@@ -4,34 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultural Highlights - Explore the World</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/cultural.css">
+    <script defer src="js/common.js"></script>
+    <script defer src="js/features.js"></script>
+    <script defer src="js/cultural.js"></script>
 </head>
 <body>
     
+    <nav class="site-navbar">
+        <div class="nav-container">
+            <a href="homePage.html" class="nav-brand">
+                🌍 Explore the World
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="destination.html">Destination</a></li>
+                <li><a href="tips.html">Travel Tips</a></li>
+                <li><a href="cultural.html" class="active">Cultural Highlight</a></li>
+                <li><a href="adventure.html">Adventure & Activities</a></li>
+                <li><a href="food&cuisine.html">Food & Cuisine</a></li>
+                <li><a href="experience.html">Travel Blog & Experiences</a></li>
+                <li><a href="contact.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                    🔍 Search
+                </button>
+                <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                    💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                </button>
+                <div class="nav-user-dropdown">
+                    <button class="nav-action-btn">
+                        👤 <span id="nav-user-label">User</span> ▾
+                    </button>
+                    <div class="nav-user-menu" id="nav-user-menu"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <header class="hero">
         <h1><strong>Cultural Highlights</strong></h1>
     </header>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="homePage.html">Home</a></li>
-            <li><a href="destination.html">Destination</a></li>
-            <li><a href="tips.html">Travel Tips</a></li>
-            <li><a href="cultural.html" class="active">Cultural Highlight</a></li>
-            <li><a href="adventure.html">Adventure & Activities</a></li>
-            <li><a href="food&cuisine.html">Food & Cuisine</a></li>
-            <li><a href="experience.html">Travel Blog & Experiences</a></li>
-            <li><a href="contact.html">About Us</a></li>
-        </ul>
-    </nav>
-
     <div class="container my-5">
-        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
             <h1 class="section-title mb-0"><strong>Cultural Highlights Around the World</strong></h1>
-            <button class="btn btn-outline-danger btn-sm px-3 py-2 mt-2 mt-md-0 fw-bold shadow-sm" onclick="checkFavorites()">
-                💖 View My Favorite Festivals
-            </button>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-warning btn-sm" onclick="openSearchModal()">🔍 Search Culture</button>
+                <button class="btn btn-outline-danger btn-sm px-3 py-2 fw-bold shadow-sm" onclick="checkFavorites()">
+                    💖 View My Favorite Festivals
+                </button>
+            </div>
         </div>
 
         <div class="row g-4">
@@ -192,16 +219,15 @@
         </div>
     </div>
 
-    <footer class="footer text-center mt-5">
+    <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px;">
         <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-        <div class="social-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-            <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+        <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+            <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/cultural.js"></script>
 </body>
 </html>

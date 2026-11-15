@@ -4,40 +4,60 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Explore the World - Discover Unforgettable Places</title>
+        <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/homePage.css">
+        <script defer src="js/common.js"></script>
+        <script defer src="js/features.js"></script>
     </head>
     <body>
-        <div class="user-dropdown">
-            <div class="dropdown">
-                <button id="userButton">User</button>
-                <div class="dropdown-content">
-                    <a href="signup.html">Sign Up</a>
-                    <a href="index.html">Log In</a>
-                    <a href="#" onclick="logout()">Log Out</a>
+        <nav class="site-navbar">
+            <div class="nav-container">
+                <a href="homePage.html" class="nav-brand">
+                    🌍 Explore the World
+                </a>
+                <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+                <ul class="nav-links">
+                    <li><a href="homePage.html" class="active">Home</a></li>
+                    <li><a href="destination.html">Destination</a></li>
+                    <li><a href="tips.html">Travel Tips</a></li>
+                    <li><a href="cultural.html">Cultural Highlight</a></li>
+                    <li><a href="adventure.html">Adventure & Activities</a></li>
+                    <li><a href="food&cuisine.html">Food & Cuisine</a></li>
+                    <li><a href="experience.html">Travel Blog & Experiences</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                        🔍 Search
+                    </button>
+                    <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                        💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                    </button>
+                    <div class="nav-user-dropdown">
+                        <button class="nav-action-btn">
+                            👤 <span id="nav-user-label">User</span> ▾
+                        </button>
+                        <div class="nav-user-menu" id="nav-user-menu"></div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
 
         <div class="background-title">
             <h1 id="title1" title="Explore the World">Explore the World</h1>
         </div>
 
-        <nav class="navbar">
-            <ul>
-                <li><a href="homePage.html" class="active">Home</a></li>
-                <li><a href="destination.html">Destination</a></li>
-                <li><a href="tips.html">Travel Tips</a></li>
-                <li><a href="cultural.html">Cultural Highlight</a></li>
-                <li><a href="adventure.html">Adventure & Activities</a></li>
-                <li><a href="food&cuisine.html">Food & Cuisine</a></li>
-                <li><a href="experience.html">Travel Blog & Experiences</a></li>
-                <li><a href="contact.html">About Us</a></li>
-            </ul>
-        </nav>
-
         <div id="title2">
             <h1>"Discover the World’s Most Breathtaking Places"</h1>
             <h2>Unforgettable travel experiences, tips, and guides for your next adventure.</h2>
+            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <button onclick="openSearchModal()" style="background: #ff9800; color: white; border: none; padding: 10px 22px; border-radius: 25px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(255,152,0,0.35);">
+                    🔍 Explore All Experiences
+                </button>
+                <button onclick="openWishlistModal()" style="background: white; color: #ff9800; border: 2px solid #ff9800; padding: 10px 22px; border-radius: 25px; font-weight: 700; cursor: pointer;">
+                    💖 View My Wishlist
+                </button>
+            </div>
         </div>
 
         <div class="video-container">
@@ -49,14 +69,14 @@
         
         <div class="image1-container">
             <img src="image/travelimage.jpg" height="300" alt="Travel and exploration inspiration">
-            <h3 style="max-width: 600px; text-align: justify;">
+            <h3 style="max-width: 600px; text-align: justify; line-height: 1.6;">
                 Your ultimate travel companion dedicated to helping adventurers discover amazing destinations, 
                 must-have travel tips, cultural highlights, thrilling activities and mouth-watering cuisine around the world. 
                 Whether you're a seasoned traveler or just starting out, we offer expert insights, travel guides and personal experiences to inspire your next trip.
             </h3>
         </div>
 
-        <h1 style="text-align: center; margin-top: 40px;">Top 3 Destinations</h1>
+        <h1 style="text-align: center; margin-top: 50px;">Top 3 Featured Destinations</h1>
 
         <div class="image-container">
             <div class="destination">
@@ -64,18 +84,30 @@
                     <img src="image/paris.jpg" height="300" alt="Paris, France">
                     <p>Paris, France - The City of Love</p>
                 </a>
+                <div style="margin-top: 8px; display: flex; justify-content: center; gap: 8px;">
+                    <a href="destinationPages/paris.html" class="nav-action-btn" style="background:#ff9800; font-size:0.8rem; padding:5px 12px;">Explore</a>
+                    <button onclick="openBookingModal('Paris, France')" class="nav-action-btn" style="background:#0284c7; font-size:0.8rem; padding:5px 12px;">Book Tour</button>
+                </div>
             </div>
             <div class="destination">
                 <a href="destinationPages/newYork.html" style="text-decoration: none; color: inherit;">
                     <img src="image/newyork.jpg" height="300" alt="New York, USA">
                     <p>New York, USA - The Big Apple</p>
                 </a>
+                <div style="margin-top: 8px; display: flex; justify-content: center; gap: 8px;">
+                    <a href="destinationPages/newYork.html" class="nav-action-btn" style="background:#ff9800; font-size:0.8rem; padding:5px 12px;">Explore</a>
+                    <button onclick="openBookingModal('New York, USA')" class="nav-action-btn" style="background:#0284c7; font-size:0.8rem; padding:5px 12px;">Book Tour</button>
+                </div>
             </div>
             <div class="destination">
                 <a href="destinationPages/rome.html" style="text-decoration: none; color: inherit;">
                     <img src="image/italy.jpg" height="300" alt="Rome, Italy">
                     <p>Rome, Italy - A Land of History & Beauty</p>
                 </a>
+                <div style="margin-top: 8px; display: flex; justify-content: center; gap: 8px;">
+                    <a href="destinationPages/rome.html" class="nav-action-btn" style="background:#ff9800; font-size:0.8rem; padding:5px 12px;">Explore</a>
+                    <button onclick="openBookingModal('Rome, Italy')" class="nav-action-btn" style="background:#0284c7; font-size:0.8rem; padding:5px 12px;">Book Tour</button>
+                </div>
             </div>
         </div>
 
@@ -84,6 +116,15 @@
             <button onclick="acceptCookies()">Accept</button>
             <button onclick="declineCookies()">Decline</button>
         </div>
+
+        <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px; margin-top:60px; text-align:center;">
+            <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
+            <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+                <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+                <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
+            </div>
+        </footer>
 
         <script>
             function setCookie(name, value, days) {
@@ -119,48 +160,16 @@
                 document.getElementById("cookie-consent").style.display = "none";
             }
         
-            function updateAuthDisplay() {
-                const user = sessionStorage.getItem("loggedInUser") || localStorage.getItem("loggedInUser");
-                const userBtn = document.getElementById("userButton");
-                if (userBtn) {
-                    if (user) {
-                        userBtn.textContent = "👤 " + user.charAt(0).toUpperCase() + user.slice(1);
-                    } else {
-                        userBtn.textContent = "Guest / Sign In";
-                    }
-                }
-            }
-
-            function logout() {
-                sessionStorage.removeItem("loggedInUser");
-                localStorage.removeItem("loggedInUser"); 
-                alert("Logged out successfully.");
-                updateAuthDisplay();
-                window.location.href = "index.html"; 
-            }
-        
             function runPersonalizedFeatures() {
-                const username = sessionStorage.getItem("loggedInUser") || localStorage.getItem("loggedInUser");
-                if (username) {
-                    console.log("Welcome back, " + username);
-                }
-
                 if (localStorage.getItem("visits")) {
                     let count = parseInt(localStorage.getItem("visits")) + 1;
                     localStorage.setItem("visits", count);
-                    console.log("You have visited this page " + count + " times.");
                 } else {
                     localStorage.setItem("visits", 1);
-                    console.log("This is your first visit.");
                 }
-
-                const startTime = new Date().toLocaleTimeString();
-                sessionStorage.setItem("sessionStart", startTime);
             }
 
             window.addEventListener("DOMContentLoaded", function () {
-                updateAuthDisplay();
-
                 const consent = localStorage.getItem("cookieConsent") || getCookie("cookieChoice");
                 if (!consent) {
                     const banner = document.getElementById("cookie-consent");

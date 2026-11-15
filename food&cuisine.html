@@ -5,38 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food & Cuisine - Explore the World</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/food.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script defer src="js/common.js"></script>
+    <script defer src="js/features.js"></script>
     <script defer src="js/food.js"></script>
 </head>
 
 <body>
+
+    <nav class="site-navbar">
+        <div class="nav-container">
+            <a href="homePage.html" class="nav-brand">
+                🌍 Explore the World
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="destination.html">Destination</a></li>
+                <li><a href="tips.html">Travel Tips</a></li>
+                <li><a href="cultural.html">Cultural Highlight</a></li>
+                <li><a href="adventure.html">Adventure & Activities</a></li>
+                <li><a href="food&cuisine.html" class="active">Food & Cuisine</a></li>
+                <li><a href="experience.html">Travel Blog & Experiences</a></li>
+                <li><a href="contact.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                    🔍 Search
+                </button>
+                <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                    💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                </button>
+                <div class="nav-user-dropdown">
+                    <button class="nav-action-btn">
+                        👤 <span id="nav-user-label">User</span> ▾
+                    </button>
+                    <div class="nav-user-menu" id="nav-user-menu"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <header class="hero animated animate-fade-in">
         <h1>Cuisine and Food for Different Countries</h1>
     </header>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="homePage.html">Home</a></li>
-            <li><a href="destination.html">Destination</a></li>
-            <li><a href="tips.html">Travel Tips</a></li>
-            <li><a href="cultural.html">Cultural Highlight</a></li>
-            <li><a href="adventure.html">Adventure & Activities</a></li>
-            <li><a href="food&cuisine.html" class="active">Food & Cuisine</a></li>
-            <li><a href="experience.html">Travel Blog & Experiences</a></li>
-            <li><a href="contact.html">About Us</a></li>
-        </ul>
-    </nav>
-
     <!-- Top Destinations Section -->
     <section class="container mt-5 animated animate-slide-up">
-        <h2 class="text-center mb-4">Foods from Different Countries</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h2 class="mb-0">Foods from Different Countries</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-warning btn-sm" onclick="openSearchModal()">🔍 Search Dishes</button>
+                <button class="btn btn-primary btn-sm" onclick="displaySavedFood()">View Saved Gallery</button>
+            </div>
+        </div>
+
         <div class="row g-4">
             <div class="col-md-4 animate-fade-in">
-                <div class="food-card h-100 shadow-sm p-3">
+                <div class="food-card h-100 shadow-sm p-3 rounded">
                     <a href="foodPages/parisFood.html">
                         <img src="image/paris1.jpg" class="img-fluid rounded" alt="Paris, France Cuisine">
                     </a>
@@ -44,14 +73,15 @@
                     <p> 
                         Paris is famous for buttery croissants, crusty baguettes, delicate crêpes, savory onion soup, and exquisite fine dining.
                     </p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
                         <a href="foodPages/parisFood.html" class="btn btn-outline-primary btn-sm">Explore Dishes</a>
                         <button class="save-btn" data-food="Paris, France">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('Paris Culinary Food Tour')">Book Food Tour</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 animate-fade-in">
-                <div class="food-card h-100 shadow-sm p-3">
+                <div class="food-card h-100 shadow-sm p-3 rounded">
                     <a href="foodPages/newYorkFood.html">
                         <img src="image/newyork1.jpg" class="img-fluid rounded" alt="New York, USA Cuisine">
                     </a>
@@ -59,14 +89,15 @@
                     <p>
                         A vibrant culinary melting pot known for pastrami on rye, classic bagels with lox, hot dogs, cronuts, and international street treats.
                     </p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
                         <a href="foodPages/newYorkFood.html" class="btn btn-outline-primary btn-sm">Explore Dishes</a>
                         <button class="save-btn" data-food="New York, USA">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('NYC Street Food Walking Tour')">Book Food Tour</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 animate-fade-in">
-                <div class="food-card h-100 shadow-sm p-3">
+                <div class="food-card h-100 shadow-sm p-3 rounded">
                     <a href="foodPages/romeFood.html">
                         <img src="image/rome.jpg" class="img-fluid rounded" alt="Rome, Italy Cuisine">
                     </a>
@@ -74,9 +105,10 @@
                     <p>
                         Authentic Roman tradition celebrated through rich Pasta alla Carbonara, crispy Carciofi artichokes, and sweet cream-filled Maritozzi.
                     </p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
                         <a href="foodPages/romeFood.html" class="btn btn-outline-primary btn-sm">Explore Dishes</a>
                         <button class="save-btn" data-food="Rome, Italy">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('Rome Pasta & Gelato Masterclass')">Book Food Tour</button>
                     </div>
                 </div>
             </div>
@@ -91,12 +123,12 @@
         <div id="saved-food" class="row"></div>
     </section>
 
-    <footer class="footer text-center mt-5">
+    <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px;">
         <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-        <div class="social-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-            <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+        <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+            <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
         </div>
     </footer>
 </body>

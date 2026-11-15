@@ -5,71 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Travel Destinations - Explore the World</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/destination.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="js/common.js"></script>
+    <script defer src="js/features.js"></script>
     <script defer src="js/destination.js"></script>
 </head>
 
 <body>
+
+    <nav class="site-navbar">
+        <div class="nav-container">
+            <a href="homePage.html" class="nav-brand">
+                🌍 Explore the World
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="destination.html" class="active">Destination</a></li>
+                <li><a href="tips.html">Travel Tips</a></li>
+                <li><a href="cultural.html">Cultural Highlight</a></li>
+                <li><a href="adventure.html">Adventure & Activities</a></li>
+                <li><a href="food&cuisine.html">Food & Cuisine</a></li>
+                <li><a href="experience.html">Travel Blog & Experiences</a></li>
+                <li><a href="contact.html">About Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-action-btn" onclick="openSearchModal()" title="Quick Search (Ctrl+K)">
+                    🔍 Search
+                </button>
+                <button class="nav-action-btn" onclick="openWishlistModal()" title="View Saved Wishlist">
+                    💖 Saved <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+                </button>
+                <div class="nav-user-dropdown">
+                    <button class="nav-action-btn">
+                        👤 <span id="nav-user-label">User</span> ▾
+                    </button>
+                    <div class="nav-user-menu" id="nav-user-menu"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <header class="hero animated animate-fade-in">
         <h1>Explore the Best Travel Destinations</h1>
     </header>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="homePage.html">Home</a></li>
-            <li><a href="destination.html" class="active">Destination</a></li>
-            <li><a href="tips.html">Travel Tips</a></li>
-            <li><a href="cultural.html">Cultural Highlight</a></li>
-            <li><a href="adventure.html">Adventure & Activities</a></li>
-            <li><a href="food&cuisine.html">Food & Cuisine</a></li>
-            <li><a href="experience.html">Travel Blog & Experiences</a></li>
-            <li><a href="contact.html">About Us</a></li>
-        </ul>
-    </nav>
-
     <!-- Top Destinations Section -->
     <section class="container mt-5 animated animate-slide-up">
-        <h2 class="text-center mb-4">World-Class Destinations</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+            <h2 class="mb-0">World-Class Destinations</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-warning btn-sm" onclick="openSearchModal()">🔍 Search Attractions</button>
+                <button class="btn btn-primary btn-sm" onclick="displaySavedDestinations()">View Saved (${getSavedDestinations().length})</button>
+            </div>
+        </div>
         <div class="row g-4">
             <div class="col-md-4 animate-fade-in">
-                <div class="destination-card h-100">
+                <div class="destination-card h-100 shadow-sm p-3 rounded">
                     <a href="destinationPages/paris.html">
-                        <img src="image/paris1.jpg" alt="Paris, France">
+                        <img src="image/paris1.jpg" class="img-fluid rounded" alt="Paris, France">
                     </a>
-                    <h3>Paris, France</h3>
+                    <h3 class="mt-3">Paris, France</h3>
                     <p>The City of Love, famous for the Eiffel Tower, the Louvre, and timeless romance.</p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
-                        <a href="destinationPages/paris.html" class="btn btn-outline-primary btn-sm">View Guide</a>
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+                        <a href="destinationPages/paris.html" class="btn btn-outline-primary btn-sm">Explore Guide</a>
                         <button class="save-btn" data-destination="Paris, France">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('Paris, France')">Book Tour</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 animate-fade-in">
-                <div class="destination-card h-100">
+                <div class="destination-card h-100 shadow-sm p-3 rounded">
                     <a href="destinationPages/newYork.html">
-                        <img src="image/newyork1.jpg" alt="New York, USA">
+                        <img src="image/newyork1.jpg" class="img-fluid rounded" alt="New York, USA">
                     </a>
-                    <h3>New York, USA</h3>
+                    <h3 class="mt-3">New York, USA</h3>
                     <p>The Big Apple, known for Times Square, Broadway, world museums, and vibrant skyline.</p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
-                        <a href="destinationPages/newYork.html" class="btn btn-outline-primary btn-sm">View Guide</a>
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+                        <a href="destinationPages/newYork.html" class="btn btn-outline-primary btn-sm">Explore Guide</a>
                         <button class="save-btn" data-destination="New York, USA">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('New York, USA')">Book Tour</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 animate-fade-in">
-                <div class="destination-card h-100">
+                <div class="destination-card h-100 shadow-sm p-3 rounded">
                     <a href="destinationPages/rome.html">
-                        <img src="image/rome.jpg" alt="Rome, Italy">
+                        <img src="image/rome.jpg" class="img-fluid rounded" alt="Rome, Italy">
                     </a>
-                    <h3>Rome, Italy</h3>
+                    <h3 class="mt-3">Rome, Italy</h3>
                     <p>A Land of History & Beauty, home to the Colosseum, Vatican, and historic piazzas.</p>
-                    <div class="d-flex justify-content-center gap-2 mt-3">
-                        <a href="destinationPages/rome.html" class="btn btn-outline-primary btn-sm">View Guide</a>
+                    <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+                        <a href="destinationPages/rome.html" class="btn btn-outline-primary btn-sm">Explore Guide</a>
                         <button class="save-btn" data-destination="Rome, Italy">Save</button>
+                        <button class="btn btn-success btn-sm" onclick="openBookingModal('Rome, Italy')">Book Tour</button>
                     </div>
                 </div>
             </div>
@@ -85,12 +117,12 @@
         <div id="saved-destinations" class="row"></div>
     </section>
 
-    <footer class="footer text-center mt-5">
+    <footer class="footer text-center mt-5" style="background:#1e293b; color:white; padding:35px 20px; margin-top:60px;">
         <p>&copy; 2025 Explore the World. All Rights Reserved.</p>
-        <div class="social-buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" class="btn btn-outline-light btn-sm" target="_blank">Facebook</a>
-            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" class="btn btn-outline-light btn-sm" target="_blank">X</a>
-            <a href="https://www.instagram.com" class="btn btn-outline-light btn-sm" target="_blank">Instagram</a>
+        <div class="social-buttons" style="margin-top:12px; display:flex; justify-content:center; gap:12px;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://exploretheworld2.pages.dev/" style="color:#94a3b8; text-decoration:none;" target="_blank">Facebook</a>
+            <a href="https://twitter.com/intent/tweet?url=https://exploretheworld2.pages.dev/&text=Check out this amazing adventure!" style="color:#94a3b8; text-decoration:none;" target="_blank">X (Twitter)</a>
+            <a href="https://www.instagram.com" style="color:#94a3b8; text-decoration:none;" target="_blank">Instagram</a>
         </div>
     </footer>
 </body>
