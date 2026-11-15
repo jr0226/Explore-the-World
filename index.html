@@ -3,34 +3,40 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login - Explore the World</title>
+        <title>Explore the World - Welcome & Sign In</title>
         <link rel="stylesheet" href="css/style.css">
+        <script>
+            // Check if user is already logged in and redirect to homePage
+            const activeUser = sessionStorage.getItem('loggedInUser') || localStorage.getItem('loggedInUser');
+            const urlParams = new URLSearchParams(window.location.search);
+            if (activeUser && !urlParams.has('switch')) {
+                window.location.href = 'homePage.html';
+            }
+        </script>
     </head>
     <body>
         <div class="auth-card">
-            <h2>Explore the World</h2>
-            <p style="margin-top: -10px; margin-bottom: 20px; color: #777; font-size: 14px;">Log in to access your saved travel itineraries</p>
+            <h2>🌍 Explore the World</h2>
+            <p style="margin-top: -10px; margin-bottom: 20px; color: #64748b; font-size: 14px;">Your premier guide to global destinations, thrilling activities & culinary wonders</p>
 
             <form id="loginForm">
                 <input type="text" id="loginUsername" placeholder="Username" required autocomplete="username"><br>
                 <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password"><br>
-                <button type="submit">Log In</button>
+                <button type="submit">Log In to Account</button>
             </form>
 
-            <div style="margin-top: 15px;">
-                <button type="button" id="demoBtn" style="background-color: #4CAF50; margin-top: 5px;">🚀 Quick Demo Login</button>
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                <button type="button" id="demoBtn" style="background-color: #10b981;">🚀 Quick Demo Traveler Login</button>
+                <a href="homePage.html" style="display: block; padding: 11px; background: #f1f5f9; color: #1e293b; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 15px; border: 1px solid #cbd5e1;">
+                    🌐 Browse Website as Guest &rarr;
+                </a>
             </div>
 
-            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
-            <p style="margin-top: 15px;">
-                <a href="homePage.html" style="color: #555; font-size: 14px; text-decoration: none;">
-                    🌐 <strong>Explore as Guest &rarr;</strong>
-                </a>
-            </p>
+            <p style="margin-top: 20px;">Don't have an account? <a href="signup.html">Create one for free</a></p>
         </div>
 
         <script>
-            // Ensure demo user exists in localStorage
+            // Initialize demo account credentials
             if (!localStorage.getItem('user_demo')) {
                 localStorage.setItem('user_demo', 'explore123');
             }
@@ -38,7 +44,7 @@
             document.getElementById('demoBtn').addEventListener('click', function() {
                 sessionStorage.setItem('loggedInUser', 'demo');
                 localStorage.setItem('loggedInUser', 'demo');
-                alert('Logged in as demo traveler! Welcome to Explore the World.');
+                alert('Logged in as Demo Traveler! Welcome to Explore the World.');
                 window.location.href = 'homePage.html';
             });
 
@@ -55,9 +61,9 @@
                     alert('Login successful! Welcome back, ' + username.charAt(0).toUpperCase() + username.slice(1) + '.');
                     window.location.href = 'homePage.html';
                 } else if (!storedPassword) {
-                    alert('Username not found. Please sign up first or use Quick Demo Login!');
+                    alert('Account not found. Please sign up or use Quick Demo Traveler Login!');
                 } else {
-                    alert('Invalid password! Please try again.');
+                    alert('Invalid password! Please verify and try again.');
                 }
             });
         </script>
